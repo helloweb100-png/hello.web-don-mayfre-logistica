@@ -16,30 +16,28 @@
     whatsappDisplay: '+52 000 000 0000',
     saludo: 'Hola, vengo de la página web de Don Mayfren Logística.',
 
-    // TODO: reemplazar por los destinos reales cuando el cliente los envíe.
-    // lon/lat en grados. "group": puertos | industrial | frontera
+    // Cobertura según la Estrategia Oficial de DML: matriz en Manzanillo, Colima y rutas
+    // hacia Occidente, Bajío y Centro. Las ciudades son referencias de cada zona industrial.
+    // lon/lat en grados. "group": puerto | occidente | bajio | centro
     hubs: [
-      { id: 'manzanillo',  name: 'Manzanillo',       group: 'puertos',    lon: -104.32, lat: 19.05, info: 'Puerto del Pacífico para contenedores, con salida hacia el occidente y el centro del país.' },
-      { id: 'lazaro',      name: 'Lázaro Cárdenas',  group: 'puertos',    lon: -102.17, lat: 17.96, info: 'Puerto del Pacífico con acceso directo al centro del país.' },
-      { id: 'veracruz',    name: 'Veracruz',         group: 'puertos',    lon:  -96.13, lat: 19.19, info: 'Puerto del Golfo con ruta hacia el altiplano y el centro de México.' },
-      { id: 'altamira',    name: 'Altamira',         group: 'puertos',    lon:  -97.90, lat: 22.40, info: 'Puerto del Golfo con conexión hacia el noreste industrial.' },
-      { id: 'cdmx',        name: 'Ciudad de México', group: 'industrial', lon:  -99.13, lat: 19.43, info: 'Gran centro de consumo y distribución del país.' },
-      { id: 'guadalajara', name: 'Guadalajara',      group: 'industrial', lon: -103.35, lat: 20.67, info: 'Polo industrial y de distribución del occidente.' },
-      { id: 'queretaro',   name: 'Querétaro',        group: 'industrial', lon: -100.39, lat: 20.59, info: 'Corazón del Bajío industrial, punto de paso entre norte y centro.' },
-      { id: 'monterrey',   name: 'Monterrey',        group: 'industrial', lon: -100.31, lat: 25.67, info: 'Capital industrial del norte y puerta hacia la frontera.' },
-      { id: 'laredo',      name: 'Nuevo Laredo',     group: 'frontera',   lon:  -99.51, lat: 27.48, info: 'Cruce fronterizo clave para el comercio con Estados Unidos.' }
+      { id: 'manzanillo',  name: 'Manzanillo',       group: 'puerto',    lon: -104.32, lat: 19.05, info: 'Matriz operativa de DML. Transferencias entre el puerto marítimo, recintos fiscales, terminales y patios de maniobras.' },
+      { id: 'guadalajara', name: 'Guadalajara',      group: 'occidente', lon: -103.35, lat: 20.67, info: 'Polo industrial y de distribución del Occidente.' },
+      { id: 'queretaro',   name: 'Querétaro',        group: 'bajio',     lon: -100.39, lat: 20.59, info: 'Corazón del Bajío industrial, punto de paso entre el norte y el centro.' },
+      { id: 'leon',        name: 'León',             group: 'bajio',     lon: -101.68, lat: 21.12, info: 'Zona industrial y manufacturera del Bajío.' },
+      { id: 'cdmx',        name: 'Ciudad de México', group: 'centro',    lon:  -99.13, lat: 19.43, info: 'Gran centro de consumo y distribución del Centro del país.' },
+      { id: 'puebla',      name: 'Puebla',           group: 'centro',    lon:  -98.20, lat: 19.04, info: 'Zona industrial del Centro, con salida hacia el Golfo y el sureste.' }
     ],
     rutas: [
-      ['manzanillo', 'guadalajara'], ['manzanillo', 'cdmx'], ['lazaro', 'cdmx'], ['veracruz', 'cdmx'],
-      ['cdmx', 'queretaro'], ['guadalajara', 'queretaro'], ['queretaro', 'monterrey'],
-      ['altamira', 'monterrey'], ['monterrey', 'laredo'], ['queretaro', 'laredo']
+      ['manzanillo', 'guadalajara'], ['manzanillo', 'queretaro'], ['manzanillo', 'leon'],
+      ['manzanillo', 'cdmx'], ['guadalajara', 'leon'], ['queretaro', 'cdmx'], ['cdmx', 'puebla']
     ]
   };
 
   const GROUPS = {
-    puertos:    { label: 'Puertos',              icon: 'i-anchor' },
-    industrial: { label: 'Centros industriales', icon: 'i-factory' },
-    frontera:   { label: 'Frontera',             icon: 'i-map-pin' }
+    puerto:    { label: 'Puerto · Matriz', icon: 'i-anchor' },
+    occidente: { label: 'Occidente',       icon: 'i-compass' },
+    bajio:     { label: 'Bajío',           icon: 'i-factory' },
+    centro:    { label: 'Centro',          icon: 'i-warehouse' }
   };
 
   /* ------------------------------------------------------------------------
@@ -474,7 +472,7 @@
     const LON0 = -118.2, LON1 = -86.3, LAT0 = 14.2, LAT1 = 33.0, KX = Math.cos(24 * Math.PI / 180);
     let W = 0, H = 0, scale = 1, ox = 0, oy = 0, dpr = 1;
     let dots = [], nodes = [], routes = [];
-    let active = hubs[4]?.id || hubs[0].id, activeSince = 0, userAt = -99;
+    let active = hubs[0].id, activeSince = 0, userAt = -99;
     let hoverIdx = -1;
 
     const project = (lon, lat) => [ox + (lon - LON0) * KX * scale, oy + (LAT1 - lat) * scale];

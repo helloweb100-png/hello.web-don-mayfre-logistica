@@ -248,12 +248,13 @@ html[data-nav="light"]{--nav-bg:rgba(255,255,255,.92);--nav-bd:rgba(10,20,40,.1)
    ========================================================================== */
 .hero{position:relative;isolation:isolate;min-height:100vh;min-height:100dvh;display:flex;align-items:flex-end;color:#fff;background:var(--navy-950);overflow:hidden}
 .hero-media{position:absolute;inset:-5% -4%;z-index:-3;will-change:transform}
-.hero-media img{width:100%;height:100%;object-fit:cover;object-position:68% 50%;animation:kenburns 30s ease-in-out infinite alternate}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:58% 50%;animation:kenburns 30s ease-in-out infinite alternate}
 @keyframes kenburns{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.2) translate3d(-2.5%,-1.5%,0)}}
 .hero::before{content:"";position:absolute;inset:0;z-index:-2;
   background:linear-gradient(180deg,rgba(5,15,34,.6) 0%,rgba(5,15,34,.72) 38%,rgba(5,15,34,.97) 100%)}
 @media (min-width:900px){
   .hero::before{background:linear-gradient(90deg,rgba(5,15,34,.96) 0%,rgba(5,15,34,.8) 40%,rgba(5,15,34,.28) 100%),linear-gradient(0deg,rgba(5,15,34,.95) 0%,rgba(5,15,34,0) 36%)}
+  .hero-media img{object-position:62% 50%}
 }
 .hero-fx{position:absolute;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen}
 .hero-inner{position:relative;z-index:2;padding-block:calc(var(--nav-h) + 48px) clamp(120px,18vh,170px)}
@@ -313,6 +314,7 @@ html:not(.js) .ticker-track{animation:ticker 40s linear infinite}
 .manifesto{position:relative;height:250vh;background:var(--paper)}
 .manifesto-pin{position:sticky;top:0;height:100vh;height:100dvh;display:flex;align-items:center;overflow:hidden}
 .manifesto-inner{position:relative}
+.manifesto-inner .eyebrow{position:relative;z-index:1;margin-bottom:clamp(18px,3vw,30px)}
 .manifesto-text{position:relative;z-index:1;font-weight:800;font-stretch:112%;font-size:clamp(1.7rem,6vw,4rem);line-height:1.13;letter-spacing:-.025em;max-width:21em;color:var(--ink)}
 .manifesto-text em{font-style:normal}
 .em-blue{color:var(--blue-600)}
@@ -332,13 +334,34 @@ html:not(.js) .ticker-track{animation:ticker 40s linear infinite}
 .expand-word--b{bottom:8vh;text-align:right;padding-right:var(--gutter);transform:translate3d(calc(var(--ep,0)*26vw),0,0)}
 .expand-frame{position:absolute;inset:0;z-index:1;overflow:hidden;
   clip-path:inset(calc((1 - var(--ep,1))*var(--cy)) calc((1 - var(--ep,1))*var(--cx)) calc((1 - var(--ep,1))*var(--cy)) calc((1 - var(--ep,1))*var(--cx)) round calc((1 - var(--ep,1))*var(--r-box)))}
-.expand-frame>img{width:100%;height:100%;object-fit:cover;object-position:76% 50%;transform:scale(calc(1.3 - .3*var(--ep,1)))}
-.expand-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,15,34,.92) 0%,rgba(5,15,34,.45) 45%,rgba(5,15,34,.1) 100%);opacity:calc(.35 + var(--ep,1)*.65)}
+.expand-frame>img{width:100%;height:100%;object-fit:cover;object-position:38% 50%;transform:scale(calc(1.3 - .3*var(--ep,1)))}
+.expand-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,15,34,.66) 0%,rgba(5,15,34,.28) 48%,rgba(5,15,34,0) 75%),linear-gradient(0deg,rgba(5,15,34,.94) 0%,rgba(5,15,34,.62) 48%,rgba(5,15,34,.1) 100%);opacity:calc(.35 + var(--ep,1)*.65)}
 .expand-copy{position:absolute;left:var(--gutter);right:var(--gutter);bottom:clamp(44px,11vh,120px);max-width:780px;display:grid;gap:18px;justify-items:start;color:#fff;
   opacity:var(--co,1);transform:translate3d(0,calc((1 - var(--co,1))*36px),0)}
 .expand-copy h2{font-size:clamp(2rem,6.6vw,4.4rem);max-width:15ch}
 .expand-copy p{font-size:clamp(1.05rem,1.8vw,1.3rem);color:#d3def2;max-width:36ch}
-@media (min-width:768px){.expand-copy{left:max(var(--gutter),calc((100vw - 1240px)/2))}.expand-frame>img{object-position:60% 50%}}
+@media (min-width:768px){.expand-copy{left:max(var(--gutter),calc((100vw - 1240px)/2))}.expand-frame>img{object-position:30% 50%}}
+
+/* ==========================================================================
+   NUESTRA HISTORIA
+   ========================================================================== */
+.story{padding-block:var(--sec-y);background:#fff}
+.story-grid{display:grid;gap:44px;grid-template-columns:minmax(0,1fr);align-items:start}
+.story-media{position:relative;aspect-ratio:4/5;border-radius:var(--r-box);overflow:hidden;background:var(--navy-900)}
+.story-media img{width:100%;height:100%;object-fit:cover}
+.story-copy{display:grid;gap:22px;justify-items:start}
+.story-copy h2{max-width:12ch}
+.story-steps{width:100%;margin-top:6px;border-top:1px solid var(--line)}
+.story-steps li{display:grid;grid-template-columns:minmax(76px,.26fr) minmax(0,1fr);gap:18px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line)}
+.story-steps b{font-family:var(--f-brand);font-weight:800;font-size:clamp(1.8rem,4.4vw,2.7rem);line-height:1;letter-spacing:-.03em;color:var(--blue-600)}
+.story-steps p{max-width:46ch;color:var(--ink-2)}
+.story-mission{margin:0;display:grid;gap:12px;padding:24px 24px 28px;border-radius:var(--r-box);background:linear-gradient(150deg,var(--navy-900),var(--navy-800));color:#fff;border-left:4px solid var(--gold-400)}
+.story-mission small{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-300)}
+.story-mission p{max-width:52ch;line-height:1.55;color:#d3def2}
+@media (min-width:960px){
+  .story-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1fr);gap:clamp(48px,7vw,104px)}
+  .story-media{position:sticky;top:110px;aspect-ratio:4/5.1}
+}
 
 /* ==========================================================================
    SERVICIOS (tarjetas que se apilan)
@@ -616,6 +639,8 @@ html:not(.js) .acc-a{grid-template-rows:1fr}
 .footer-grid{display:grid;gap:36px;grid-template-columns:minmax(0,1fr);padding-bottom:48px}
 .footer-brand{display:grid;gap:18px;justify-items:start}
 .footer-brand p{max-width:30ch;font-weight:600;font-stretch:108%;color:#e7eefc}
+.footer-brand .footer-loc{display:flex;align-items:center;gap:8px;max-width:none;font-weight:500;font-stretch:100%;font-size:.95rem;color:#b9c6df}
+.footer-brand .footer-loc .ico{color:var(--gold-300)}
 .footer-brand .brand-text{display:flex}
 .footer-brand .brand-text i{color:var(--gold-300)}
 .footer-brand .brand-mark{height:30px}
