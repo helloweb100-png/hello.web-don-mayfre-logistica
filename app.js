@@ -11,9 +11,9 @@
      CONFIGURACIÓN DEL CLIENTE  (lo único que hay que editar para publicar)
      ------------------------------------------------------------------------ */
   const CONFIG = {
-    // TODO: número de WhatsApp del cliente, formato internacional SIN "+" ni espacios
-    whatsapp: '520000000000',
-    whatsappDisplay: '+52 000 000 0000',
+    // Número de WhatsApp del cliente, formato internacional SIN "+" ni espacios
+    whatsapp: '5213121022208',
+    whatsappDisplay: '+52 1 312 102 2208',
     saludo: 'Hola, vengo de la página web de Don Mayfren Logística.',
 
     // Cobertura según la Estrategia Oficial de DML: matriz en Manzanillo, Colima y rutas
